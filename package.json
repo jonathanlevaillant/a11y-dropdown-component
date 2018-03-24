@@ -1,0 +1,55 @@
+{
+  "name": "a11y-dropdown-component",
+  "description": "Accessible Dropdown Component in Vanilla JS",
+  "version": "1.0.0",
+  "keywords": [
+    "dropdown",
+    "listbox",
+    "a11y",
+    "accessibility",
+    "aria",
+    "es6",
+    "es2015",
+    "vanilla js"
+  ],
+  "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
+  "scripts": {
+    "start": "yarn",
+    "dev": "gulp && gulp demo && gulp watch",
+    "build": "rm -rf ./dist && gulp && gulp --env production",
+    "prepare": "yarn run build"
+  },
+  "main": "dist/a11y-dropdown-component.js",
+  "module": "dist/a11y-dropdown-component.es.js",
+  "jsdelivr": "dist/a11y-dropdown-component.min.js",
+  "files": [
+    "dist/a11y-dropdown-component.js",
+    "dist/a11y-dropdown-component.es.js",
+    "dist/a11y-dropdown-component.min.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanlevaillant/a11y-dropdown-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathanlevaillant/a11y-dropdown-component/issues",
+    "email": "jonathan.levaillant@outlook.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browserify": "^15.2.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-uglify-es": "^1.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

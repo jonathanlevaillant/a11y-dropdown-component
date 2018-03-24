@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Accessible Dropdown Component in Vanilla JS</title>
+    <link rel="stylesheet" href="./src/main.css" media="all">
+  </head>
+  <body>
+    <article class="o-container">
+      <h2>Dropdowns</h2>
+      <div class="c-dropdown">
+        <button
+          type="button"
+          id="dropdown-trigger-1"
+          class="c-btn u-p"
+          data-component="dropdown"
+          data-target="dropdown-1">
+          Open dropdown 1
+        </button>
+        <ul id="dropdown-1" class="c-dropdown__menu">
+          <li data-item><a href="#" class="c-dropdown__link"><span>Option 1</span></a></li>
+          <li data-item><a href="#" class="c-dropdown__link">Option 2</a></li>
+          <li data-item><a href="#" class="c-dropdown__link">Option 3</a></li>
+        </ul>
+      </div>
+      <div class="c-dropdown">
+        <button
+          type="button"
+          id="dropdown-trigger-2"
+          class="c-btn u-p"
+          data-target="dropdown-2">
+          Open dropdown 2
+        </button>
+        <ul id="dropdown-2" class="c-dropdown__menu">
+          <li data-item><a href="#" class="c-dropdown__link"><span>Option 1</span></a></li>
+          <li data-item><a href="#" class="c-dropdown__link">Option 2</a></li>
+          <li data-item><a href="#" class="c-dropdown__link">Option 3</a></li>
+        </ul>
+      </div>
+    </article>
+    <script src="./dist/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+/* main.css
+   ========================================================================== */
+
+/* base */
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+h2 {
+  margin-top: 2.4rem;
+  margin-bottom: 0;
+  font-family: Georgia, serif;
+  font-size: 3.125rem;
+  line-height: 1.536;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
+/* container */
+.o-container {
+  max-width: 105.6rem;
+  padding-right: 2.4rem;
+  padding-left: 2.4rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* buttons */
+.c-btn {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  -webkit-transform: translate3d(0, -0.25em, 0);
+  transform: translate3d(0, -0.25em, 0);
+  padding: 0.75em 1.5em;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  border: 0;
+  border-radius: 0.25em;
+  background-color: #f0f0f0;
+  vertical-align: top;
+  text-decoration: none;
+  font-weight: 700;
+  color: #e91e63;
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.c-btn::before,
+.c-btn::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  -webkit-box-shadow: 0 0.25em 0 0 #ccc;
+  box-shadow: 0 0.25em 0 0 #ccc;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.c-btn::after {
+  -webkit-box-shadow: 0 0.25em 0 0 #aa1145;
+  box-shadow: 0 0.25em 0 0 #aa1145;
+  background-color: #e91e63;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.c-btn:focus,
+.c-btn:hover,
+.c-btn:active {
+  color: #fff;
+}
+
+.c-btn:focus::after,
+.c-btn:hover::after,
+.c-btn:active::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+.c-btn--unstyled {
+  position: static;
+  -webkit-transform: none;
+  transform: none;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.c-btn--unstyled::before,
+.c-btn--unstyled::after {
+  content: none;
+}
+
+/* dropdowns */
+.c-dropdown {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.c-dropdown__menu {
+  max-height: 20rem;
+  margin: 0;
+  padding-left: 0;
+  border-radius: 0.25em;
+  visibility: visible;
+  opacity: 1;
+  overflow: hidden;
+  list-style: none;
+  transition: max-height .2s, visibility 0s, opacity 0s;
+}
+
+.c-dropdown__menu[aria-hidden="true"] {
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: max-height .2s, visibility .2s .2s, opacity .2s .2s;
+}
+
+.c-dropdown__link {
+  display: block;
+  margin: .25em;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e91e63;
+  background-color: #f0f0f0;
+}
+
+/* utilities */
+.u-p {
+  margin-top: 2.4rem;
+}
