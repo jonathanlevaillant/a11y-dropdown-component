@@ -27,10 +27,17 @@ const Dropdowns = (() => {
       this.isOpen = options.isOpen;
 
       this.toggle = this.toggle.bind(this);
+      this.onClick = this.onClick.bind(this);
       this.onFocus = this.onFocus.bind(this);
       this.onKeydown = this.onKeydown.bind(this);
 
       if (this.isOpen) this.open();
+    }
+
+    onClick(event) {
+      if (!event.target.closest(`#${this.trigger.id}, #${this.dropdown.id}`)) {
+        this.close();
+      }
     }
 
     onFocus(event) {
@@ -103,6 +110,7 @@ const Dropdowns = (() => {
     removeAttributes() {
       this.trigger.removeAttribute('aria-haspopup');
       this.trigger.removeAttribute('aria-controls');
+      this.trigger.removeAttribute('aria-expanded');
       this.dropdown.removeAttribute('role');
       this.dropdown.removeAttribute('aria-labelledby');
       this.dropdown.removeAttribute('tabindex');
@@ -117,6 +125,7 @@ const Dropdowns = (() => {
     }
 
     addEventListeners() {
+      document.addEventListener('click', this.onClick);
       this.trigger.addEventListener('keydown', this.onKeydown);
       this.dropdown.addEventListener('keydown', this.onKeydown);
       this.links.forEach((link) => {
@@ -125,6 +134,7 @@ const Dropdowns = (() => {
     }
 
     removeEventListeners() {
+      document.removeEventListener('click', this.onClick);
       this.trigger.removeEventListener('keydown', this.onKeydown);
       this.dropdown.removeEventListener('keydown', this.onKeydown);
       this.links.forEach((link) => {
@@ -140,9 +150,6 @@ const Dropdowns = (() => {
 
       // add event listeners
       this.addEventListeners();
-
-      // set focus
-      this.trigger.focus();
     }
 
     close() {
