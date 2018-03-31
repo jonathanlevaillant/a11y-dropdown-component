@@ -91,12 +91,14 @@ p:first-child {
   opacity: 0;
 }
 
+.c-btn[aria-expanded="true"],
 .c-btn:focus,
 .c-btn:hover,
 .c-btn:active {
   color: #fff;
 }
 
+.c-btn[aria-expanded="true"]::after,
 .c-btn:focus::after,
 .c-btn:hover::after,
 .c-btn:active::after {
