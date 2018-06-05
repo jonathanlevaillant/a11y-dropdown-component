@@ -17,7 +17,7 @@ const Dropdowns = (() => {
       this.trigger = options.trigger;
       this.dropdown = document.getElementById(options.dropdown);
       this.items = this.dropdown.querySelectorAll('[data-item]');
-      this.links = this.dropdown.querySelectorAll('a');
+      this.links = this.dropdown.querySelectorAll('[data-link]');
       [this.firstLink] = this.links;
       this.lastLink = this.links[this.links.length - 1];
 
@@ -78,7 +78,7 @@ const Dropdowns = (() => {
     onKeydown(event) {
       switch (event.which) {
         case KEY_CODES.escape:
-          this.close();
+          this.close(event);
           break;
         case KEY_CODES.up:
         case KEY_CODES.down:
@@ -152,7 +152,7 @@ const Dropdowns = (() => {
       this.addEventListeners();
     }
 
-    close() {
+    close(event) {
       this.isOpen = false;
 
       this.trigger.removeAttribute('aria-expanded');
@@ -162,7 +162,7 @@ const Dropdowns = (() => {
       this.removeEventListeners();
 
       // restoring focus
-      this.trigger.focus();
+      if (event) this.trigger.focus();
     }
 
     toggle(event) {
