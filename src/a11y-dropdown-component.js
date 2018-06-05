@@ -17,7 +17,7 @@ const Dropdowns = (() => {
       this.trigger = options.trigger;
       this.dropdown = document.getElementById(options.dropdown);
       this.items = this.dropdown.querySelectorAll('[data-item]');
-      this.links = this.dropdown.querySelectorAll('[data-link]');
+      this.links = this.dropdown.querySelectorAll('[data-focus]');
       [this.firstLink] = this.links;
       this.lastLink = this.links[this.links.length - 1];
 
