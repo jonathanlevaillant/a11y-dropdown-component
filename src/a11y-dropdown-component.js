@@ -146,7 +146,7 @@ const Dropdowns = (() => {
       this.isOpen = true;
 
       this.trigger.setAttribute('aria-expanded', true);
-      this.dropdown.removeAttribute('aria-hidden');
+      this.dropdown.setAttribute('aria-hidden', false);
 
       // add event listeners
       this.addEventListeners();
@@ -155,7 +155,7 @@ const Dropdowns = (() => {
     close(event) {
       this.isOpen = false;
 
-      this.trigger.removeAttribute('aria-expanded');
+      this.trigger.setAttribute('aria-expanded', false);
       this.dropdown.setAttribute('aria-hidden', true);
 
       // remove event listeners
