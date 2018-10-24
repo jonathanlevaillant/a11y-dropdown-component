@@ -24,8 +24,10 @@ const Dropdowns = (() => {
       this.state = [];
       this.currentFocusedIndex = 0;
 
+      this.hover = options.hover;
       this.isOpen = options.isOpen;
 
+      this.open = this.open.bind(this);
       this.toggle = this.toggle.bind(this);
       this.onClick = this.onClick.bind(this);
       this.onFocus = this.onFocus.bind(this);
@@ -126,6 +128,7 @@ const Dropdowns = (() => {
 
     addEventListeners() {
       document.addEventListener('click', this.onClick);
+      if (this.hover) document.addEventListener('mouseover', this.onClick);
       this.trigger.addEventListener('keydown', this.onKeydown);
       this.dropdown.addEventListener('keydown', this.onKeydown);
       this.links.forEach((link) => {
@@ -135,6 +138,7 @@ const Dropdowns = (() => {
 
     removeEventListeners() {
       document.removeEventListener('click', this.onClick);
+      if (this.hover) document.removeEventListener('mouseover', this.onClick);
       this.trigger.removeEventListener('keydown', this.onKeydown);
       this.dropdown.removeEventListener('keydown', this.onKeydown);
       this.links.forEach((link) => {
@@ -182,6 +186,7 @@ const Dropdowns = (() => {
 
       // remove event listener on the trigger button
       this.trigger.removeEventListener('click', this.toggle);
+      if (this.hover) this.trigger.removeEventListener('mouseover', this.open);
     }
 
     render() {
@@ -199,16 +204,17 @@ const Dropdowns = (() => {
 
       // toggle dropdown
       this.trigger.addEventListener('click', this.toggle);
+      if (this.hover) this.trigger.addEventListener('mouseover', this.open);
     }
   }
 
   // save all active dropdowns
   const activeDropdowns = [];
 
-  const render = (triggerId, { isOpen = false } = {}) => {
+  const render = (triggerId, { isOpen = false, hover = false } = {}) => {
     const trigger = document.getElementById(triggerId);
     const dropdown = trigger.dataset.target;
-    const options = { trigger, dropdown, isOpen };
+    const options = { trigger, dropdown, isOpen, hover };
 
     const activeDropdown = new Dropdown(options);
     activeDropdown.render();
@@ -236,6 +242,7 @@ const Dropdowns = (() => {
       options.trigger = trigger;
       options.dropdown = trigger.dataset.target;
 
+      options.hover = trigger.dataset.hover === 'true';
       options.isOpen = trigger.dataset.open === 'true';
 
       const dropdown = new Dropdown(options);
