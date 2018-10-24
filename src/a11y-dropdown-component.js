@@ -214,7 +214,12 @@ const Dropdowns = (() => {
   const render = (triggerId, { isOpen = false, hover = false } = {}) => {
     const trigger = document.getElementById(triggerId);
     const dropdown = trigger.dataset.target;
-    const options = { trigger, dropdown, isOpen, hover };
+    const options = {
+      trigger,
+      dropdown,
+      isOpen,
+      hover,
+    };
 
     const activeDropdown = new Dropdown(options);
     activeDropdown.render();
