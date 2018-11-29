@@ -26,6 +26,7 @@ const Dropdowns = (() => {
 
       this.hover = options.hover;
       this.isOpen = options.isOpen;
+      this.autoClose = options.autoClose;
 
       this.open = this.open.bind(this);
       this.toggle = this.toggle.bind(this);
@@ -37,7 +38,11 @@ const Dropdowns = (() => {
     }
 
     onClick(event) {
-      if (!event.target.closest(`#${this.trigger.id}, #${this.dropdown.id}`)) {
+      if (!this.autoClose && !event.target.closest(`#${this.trigger.id}, #${this.dropdown.id}`)) {
+        this.close();
+      }
+
+      if (this.autoClose && !event.target.closest(`#${this.trigger.id}`)) {
         this.close();
       }
     }
@@ -211,7 +216,7 @@ const Dropdowns = (() => {
   // save all active dropdowns
   const activeDropdowns = [];
 
-  const render = (triggerId, { isOpen = false, hover = false } = {}) => {
+  const render = (triggerId, { isOpen = false, hover = false, autoClose = false } = {}) => {
     const trigger = document.getElementById(triggerId);
     const dropdown = trigger.dataset.target;
     const options = {
@@ -219,6 +224,7 @@ const Dropdowns = (() => {
       dropdown,
       isOpen,
       hover,
+      autoClose,
     };
 
     const activeDropdown = new Dropdown(options);
@@ -249,6 +255,7 @@ const Dropdowns = (() => {
 
       options.hover = trigger.dataset.hover === 'true';
       options.isOpen = trigger.dataset.open === 'true';
+      options.autoClose = trigger.dataset.autoClose === 'true';
 
       const dropdown = new Dropdown(options);
       dropdown.render();
